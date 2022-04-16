@@ -40,12 +40,18 @@ namespace Renamer
             this.btnRunAPI = new System.Windows.Forms.Button();
             this.btnRefreash = new System.Windows.Forms.Button();
             this.btnRenameAll = new System.Windows.Forms.Button();
-            this.lbStatus = new System.Windows.Forms.Label();
             this.lbImage = new System.Windows.Forms.PictureBox();
             this.tbConsole = new System.Windows.Forms.TextBox();
+            this.btnStopAPI = new System.Windows.Forms.Button();
+            this.lbBlacklist = new System.Windows.Forms.Label();
+            this.tbBlacklist = new System.Windows.Forms.TextBox();
+            this.rbFilter = new System.Windows.Forms.RadioButton();
+            this.rbRaw = new System.Windows.Forms.RadioButton();
+            this.gbMethod = new System.Windows.Forms.GroupBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRename)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbImage)).BeginInit();
+            this.gbMethod.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -91,6 +97,7 @@ namespace Renamer
             // 
             this.toolStripLbPathInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLbPathInfo.Name = "toolStripLbPathInfo";
+            this.toolStripLbPathInfo.ReadOnly = true;
             this.toolStripLbPathInfo.Size = new System.Drawing.Size(116, 28);
             // 
             // dgRename
@@ -112,29 +119,33 @@ namespace Renamer
             // 
             // before
             // 
+            this.before.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.before.HeaderText = "before";
             this.before.Name = "before";
             this.before.ReadOnly = true;
+            this.before.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // after
             // 
+            this.after.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.after.HeaderText = "after";
             this.after.Name = "after";
+            this.after.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnRunAPI
             // 
-            this.btnRunAPI.Location = new System.Drawing.Point(678, 111);
+            this.btnRunAPI.Location = new System.Drawing.Point(678, 197);
             this.btnRunAPI.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRunAPI.Name = "btnRunAPI";
             this.btnRunAPI.Size = new System.Drawing.Size(88, 27);
             this.btnRunAPI.TabIndex = 2;
-            this.btnRunAPI.Text = "Run API";
+            this.btnRunAPI.Text = "Detect Text";
             this.btnRunAPI.UseVisualStyleBackColor = true;
             this.btnRunAPI.Click += new System.EventHandler(this.btnRunAPI_Click);
             // 
             // btnRefreash
             // 
-            this.btnRefreash.Location = new System.Drawing.Point(678, 144);
+            this.btnRefreash.Location = new System.Drawing.Point(784, 230);
             this.btnRefreash.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRefreash.Name = "btnRefreash";
             this.btnRefreash.Size = new System.Drawing.Size(88, 27);
@@ -145,7 +156,7 @@ namespace Renamer
             // 
             // btnRenameAll
             // 
-            this.btnRenameAll.Location = new System.Drawing.Point(785, 111);
+            this.btnRenameAll.Location = new System.Drawing.Point(784, 197);
             this.btnRenameAll.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRenameAll.Name = "btnRenameAll";
             this.btnRenameAll.Size = new System.Drawing.Size(88, 27);
@@ -154,45 +165,100 @@ namespace Renamer
             this.btnRenameAll.UseVisualStyleBackColor = true;
             this.btnRenameAll.Click += new System.EventHandler(this.btnRenameAll_Click);
             // 
-            // lbStatus
-            // 
-            this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(923, 117);
-            this.lbStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(22, 15);
-            this.lbStatus.TabIndex = 5;
-            this.lbStatus.Text = ".....";
-            // 
             // lbImage
             // 
-            this.lbImage.Location = new System.Drawing.Point(653, 205);
+            this.lbImage.Location = new System.Drawing.Point(678, 291);
             this.lbImage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lbImage.Name = "lbImage";
-            this.lbImage.Size = new System.Drawing.Size(365, 375);
+            this.lbImage.Size = new System.Drawing.Size(316, 289);
             this.lbImage.TabIndex = 6;
             this.lbImage.TabStop = false;
             // 
             // tbConsole
             // 
             this.tbConsole.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tbConsole.Location = new System.Drawing.Point(14, 48);
+            this.tbConsole.Location = new System.Drawing.Point(14, 54);
             this.tbConsole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tbConsole.Multiline = true;
             this.tbConsole.Name = "tbConsole";
             this.tbConsole.ReadOnly = true;
             this.tbConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbConsole.Size = new System.Drawing.Size(453, 122);
+            this.tbConsole.Size = new System.Drawing.Size(397, 84);
             this.tbConsole.TabIndex = 7;
+            // 
+            // btnStopAPI
+            // 
+            this.btnStopAPI.Location = new System.Drawing.Point(678, 230);
+            this.btnStopAPI.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnStopAPI.Name = "btnStopAPI";
+            this.btnStopAPI.Size = new System.Drawing.Size(88, 27);
+            this.btnStopAPI.TabIndex = 13;
+            this.btnStopAPI.Text = "Stop";
+            this.btnStopAPI.UseVisualStyleBackColor = true;
+            this.btnStopAPI.Click += new System.EventHandler(this.btnStopAPI_Click);
+            // 
+            // lbBlacklist
+            // 
+            this.lbBlacklist.AutoSize = true;
+            this.lbBlacklist.Location = new System.Drawing.Point(141, 19);
+            this.lbBlacklist.Name = "lbBlacklist";
+            this.lbBlacklist.Size = new System.Drawing.Size(50, 15);
+            this.lbBlacklist.TabIndex = 9;
+            this.lbBlacklist.Text = "Blacklist";
+            // 
+            // tbBlacklist
+            // 
+            this.tbBlacklist.Location = new System.Drawing.Point(141, 35);
+            this.tbBlacklist.Name = "tbBlacklist";
+            this.tbBlacklist.Size = new System.Drawing.Size(382, 23);
+            this.tbBlacklist.TabIndex = 8;
+            this.tbBlacklist.TextChanged += new System.EventHandler(this.tbBlacklist_TextChanged);
+            // 
+            // rbFilter
+            // 
+            this.rbFilter.AutoSize = true;
+            this.rbFilter.Location = new System.Drawing.Point(26, 39);
+            this.rbFilter.Name = "rbFilter";
+            this.rbFilter.Size = new System.Drawing.Size(71, 19);
+            this.rbFilter.TabIndex = 10;
+            this.rbFilter.TabStop = true;
+            this.rbFilter.Text = "Use filter";
+            this.rbFilter.UseVisualStyleBackColor = true;
+            // 
+            // rbRaw
+            // 
+            this.rbRaw.AutoSize = true;
+            this.rbRaw.Location = new System.Drawing.Point(26, 88);
+            this.rbRaw.Name = "rbRaw";
+            this.rbRaw.Size = new System.Drawing.Size(89, 19);
+            this.rbRaw.TabIndex = 11;
+            this.rbRaw.TabStop = true;
+            this.rbRaw.Text = "Use raw text";
+            this.rbRaw.UseVisualStyleBackColor = true;
+            this.rbRaw.CheckedChanged += new System.EventHandler(this.rbRaw_CheckedChanged);
+            // 
+            // gbMethod
+            // 
+            this.gbMethod.Controls.Add(this.rbRaw);
+            this.gbMethod.Controls.Add(this.tbBlacklist);
+            this.gbMethod.Controls.Add(this.lbBlacklist);
+            this.gbMethod.Controls.Add(this.rbFilter);
+            this.gbMethod.Location = new System.Drawing.Point(506, 40);
+            this.gbMethod.Name = "gbMethod";
+            this.gbMethod.Size = new System.Drawing.Size(534, 121);
+            this.gbMethod.TabIndex = 12;
+            this.gbMethod.TabStop = false;
+            this.gbMethod.Text = "Choose method";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 623);
+            this.Controls.Add(this.btnStopAPI);
+            this.Controls.Add(this.gbMethod);
             this.Controls.Add(this.tbConsole);
             this.Controls.Add(this.lbImage);
-            this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.btnRenameAll);
             this.Controls.Add(this.btnRefreash);
             this.Controls.Add(this.btnRunAPI);
@@ -200,11 +266,13 @@ namespace Renamer
             this.Controls.Add(this.toolStrip1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Renamer";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRename)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lbImage)).EndInit();
+            this.gbMethod.ResumeLayout(false);
+            this.gbMethod.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,10 +290,15 @@ namespace Renamer
         private System.Windows.Forms.Button btnRunAPI;
         private System.Windows.Forms.Button btnRefreash;
         private System.Windows.Forms.Button btnRenameAll;
-        private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.PictureBox lbImage;
         private System.Windows.Forms.TextBox tbConsole;
         private System.Windows.Forms.ToolStripTextBox toolStripLbPathInfo;
+        private System.Windows.Forms.Button btnStopAPI;
+        private System.Windows.Forms.Label lbBlacklist;
+        private System.Windows.Forms.TextBox tbBlacklist;
+        private System.Windows.Forms.RadioButton rbFilter;
+        private System.Windows.Forms.RadioButton rbRaw;
+        private System.Windows.Forms.GroupBox gbMethod;
     }
 }
 
